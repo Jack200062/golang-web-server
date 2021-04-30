@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="img/ok.png">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <header>
+          <div class="header_content">
+            <div class="header_content_left">
+              <a href="index.html"><img src="img/ok.png" alt="Главная"></a>
+              <div class="search_icon">
+                <button onclick="clike()" class="search_button" type="button" name="button"><img class="search_img" src="img/search.png" alt="Поиск"></a></button>
+                <input class="search_input" type="search" >
+              </div>
+
+            </div>
+            <ul class="section_header_icons hover">
+              <li class="burg"> <button  class="norm_burger" onclick="clik()" type="button" name="button">
+                <span class="middel-line"></span>
+              </button> </li>
+              <li class="prof"><a href="registration.html"><img src="img/icon.png" class="profile" alt="Профиль"></a></li>
+              <li class="teleg"><a href="cart.html"><img src="img/telega.png" class="cart" alt="Корзина"></a></li>
+            </ul>
+            <div class="circle">
+              <p>5</p>
+            </div>
+            <div class="menu">
+              <div class="menu_content">
+                <div class="menu_content_text">
+                  <p class="title_menu">menu</p>
+                  <a class="sex" href="#">man</a>
+                  <ul>
+                    <li class="menu_item"><a href="#">Accessories</a> </li>
+                    <li class="menu_item"><a href="#">Bags</a> </li>
+                    <li class="menu_item"><a href="#">Denim</a> </li>
+                    <li class="menu_item"><a href="#">T-Shirts</a> </li>
+                  </ul>
+                <a class="sex" href="#">woman</a>
+                  <ul>
+                    <li class="menu_item"><a href="#">Accessories</a> </li>
+                    <li class="menu_item"><a href="#">Jackets & Coats</a> </li>
+                    <li class="menu_item"><a href="#">Polos</a> </li>
+                    <li class="menu_item"><a href="#">T-Shirts</a> </li>
+                    <li class="menu_item"><a href="#">Shirts</a> </li>
+                  </ul>
+                  <a class="sex" href="#">kids</a>
+                  <ul>
+                    <li class="menu_item"><a href="#">Accessories</a> </li>
+                    <li class="menu_item"><a href="#">Jackets & Coats</a> </li>
+                    <li class="menu_item"><a href="#">Polos</a> </li>
+                    <li class="menu_item"><a href="#">T-Shirts</a> </li>
+                    <li class="menu_item"><a href="#">Shirts</a> </li>
+                    <li class="menu_item"><a href="#">Bags</a> </li>
+                  </ul>
+                  <a class="sex" href="registration.html">registration</a>
+                  <a class="sex" href="cart.html">cart</a>
+                </div>
+
+              </div>
+              <div class="menu_x">
+              <button class="menu_cross" onclick="clik()" type="button" name="button"><img src="img/x.png"  alt=""></button>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="shopping_cart_top">
+          <div class="shopping_cart_container_top">
+            <p class="shoppint_text">registration</p>
+          </div>
+        </div>
+        <div class="main_section_registration">
+          <div class="main_section_registration_content">
+            <div class="registration_content_form">
+              <form class="" action="#" method="get">
+              <p class="form_text">Your Name</p>
+                  <input  class="adress" type="text"  placeholder="First Name">
+                  <input  class="adress" type="text" placeholder="Last Name">
+                <div class="radio">
+                  <div class="men">
+                    <input id="men"  type="radio" name="sex" value="1">
+                    <label class="trans"  onclick="rad()" for="men">Male</label>
+                  </div>
+                  <div class="female">
+                    <input id="female" type="radio" name="sex" value="2">
+                    <label class="trans" onclick="rad()" for="female">Female</label>
+                  </div>
+                  <div class="others">
+                    <input id="other"  type="radio" name="sex" value="3">
+                    <label class="trans" onclick="rad()" for="other">Other</label>
+                  </div>
+                </div>
+              </form>
+              <p class="form_text">Login Details</p>
+              <input  class="adress" type="email"  placeholder="Email">
+              <input  class="adress" type="password"  placeholder="Password">
+              <p class="light_text">Please use 8 or more characters, with at least 1 number and a mixture of uppercase and lowercase letters</p>
+              <button class="join" type="submit" name="button">join now</button>
+            </div>
+            <div class="registration_content_text">
+              <p class="loyal">loayality has its perks</p>
+              <p class="loyal_text">Get in on the loyalty program where you can earn points and unlock serious perks. Starting with these as soon as you join:</p>
+              <ul class="loyal_program">
+                <li>15% off welcome offer</li>
+                <li>Free shipping, returns and exchanges on all orders</li>
+                <li>$10 off a purchase on your birthday </li>
+                <li>Early access to products</li>
+                <li>Exclusive offers & rewards</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="quality">
+
+          <div class="subscribe">
+            <div class="subscribe_content">
+              <div class="subscribe_content_left">
+                <div class="subscribe_img">
+
+                </div>
+                  <p class="subscribe_content_left_p">“Vestibulum quis porttitor dui! Quisque viverra nunc mi, a pulvinar purus condimentum“</p>
+
+
+              </div>
+              <div class="subscribe_content_right">
+                  <p class="subscribe_content_right_title">subscribe</p>
+                  <p class="subscribe_content_right_p">for our newletter and promotion</p>
+                <div class="inputButton">
+                  <input  class="inputMail"type="email" placeholder="Enter Your Email">
+                  <button class="inputInput"type="submit" name="button">Subscribe</button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <footer>
+        <div class="footer_content">
+          <div class="footer_content_left">
+            <p class="footer_text">© 2021  Brand  All Rights Reserved.</p>
+          </div>
+          <div class="footer_content_right">
+            <a class="media" href="#"><img src="img/fb.png" alt="facebook"></a>
+            <a class="media" href="#"><img src="img/inst.png" alt="inst"></a>
+            <a class="media" href="#"><img src="img/p.png" alt="p"></a>
+            <a class="media" href="#"><img src="img/twitter.png" alt="twitter"></a>
+
+          </div>
+
+        </div>
+      </footer>
+
+    </div>
+  <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>
