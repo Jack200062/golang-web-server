@@ -88,6 +88,7 @@ func logged_in(w http.ResponseWriter, r *http.Request) {
 	if bcrypt.CompareHashAndPassword(hashed_db_password, []byte(user.Password)) != nil {
 		fmt.Fprintf(w, "Incorrect credentials.. Try again")
 		w.WriteHeader(http.StatusUnauthorized)
+		return
 	}
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
