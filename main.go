@@ -32,16 +32,18 @@ func home_page(w http.ResponseWriter, r *http.Request) {
 }
 
 func new_user(w http.ResponseWriter, r *http.Request) {
-	login := r.FormValue("login")
-	password := r.FormValue("password")
+	user := User{
+		Login:    r.FormValue("login"),
+		Password: r.FormValue("password"),
+	}
 
 	db, err := sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/web_server")
 	if err != nil {
 		panic(err)
 	}
 	defer db.Close()
-	password = string(HashPassword([]byte(password)))
-	insert, err := db.Query(fmt.Sprintf("INSERT INTO `users` (`login`,`password`) VALUES('%s', '%s')", login, password))
+
+	insert, err := db.Query(fmt.Sprintf("INSERT INTO `users` (`login`,`password`) VALUES('%s', '%s')", user.Login, string(HashPassword([]byte(user.Password)))))
 	if err != nil {
 		panic(err)
 	}
@@ -67,33 +69,24 @@ func login(w http.ResponseWriter, r *http.Request) {
 }
 
 func logged_in(w http.ResponseWriter, r *http.Request) {
+	user := User{
+		Login:    r.FormValue("login"),
+		Password: r.FormValue("password"),
+	}
 
 	db, err := sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/web_server")
 	if err != nil {
 		panic(err)
 	}
-
 	defer db.Close()
 
-	pass, err := db.Query(fmt.Sprintf("SELECT `password` FROM `users` WHERE `login`=%s", r.FormValue("login")))
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
+	pass := db.QueryRow("SELECT  password FROM users WHERE login=?", user.Login)
+	var db_password string
+	err = pass.Scan(&db_password)
 
-	defer pass.Close()
-
-	var user User
-	for pass.Next() {
-		err = pass.Scan(&user.Password)
-		if err != nil {
-			panic(err)
-		}
-	}
-	fmt.Println(user.Password)
-	fmt.Println(r.FormValue("password"))
-	if err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(r.FormValue("password"))); err != nil {
-		fmt.Println("Ti lox")
+	hashed_db_password := []byte(db_password)
+	if bcrypt.CompareHashAndPassword(hashed_db_password, []byte(user.Password)) != nil {
+		fmt.Fprintf(w, "Incorrect credentials.. Try again")
 		w.WriteHeader(http.StatusUnauthorized)
 	}
 
